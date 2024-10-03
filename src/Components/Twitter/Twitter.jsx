@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import AddTweet from "../AddTweet/AddTweet";
 import TweetList from "../TweetList/TweetList";
 
@@ -18,7 +18,7 @@ function Twitter(){
     
       const [tweets,setTweets] = useState(dummyTweets);
 
-      const handleAddTweet = (text) =>{
+      const handleAddTweet = useCallback((text) =>{
 
         const nextId = (tweets.length) > 0?tweets[tweets.length-1].id +1:0;
 
@@ -28,16 +28,16 @@ function Twitter(){
             likeCount : Math.floor(Math.random()*10),
             createdAt : new Date()
         }])
-      }
+      },[])
 
-      const handleEditTweet = (tweet) => {
+      const handleEditTweet = useCallback((tweet) => {
             setTweets(
                 tweets.map((currentTweet)=>{
                     if(currentTweet.id === tweet.id) return tweet;
                     else return currentTweet
                 })
             )
-      }
+      },[])
 
       const sortTweets =() => {
         tweets.sort((t1,t2) => t2.createdAt.getTime() - t1.createdAt.getTime());
