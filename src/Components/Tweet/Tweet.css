@@ -5,10 +5,18 @@
     font-size: larger;
 }
 
-.tweet-like{
+.tweet-like,.created-at{
     font-size: x-small;
 }
 
 .tweet-content {
     margin-bottom: 1rem;
+}
+.tweet-like-created-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.tweet-edit-wrapper{
+    display: flex;
+    justify-content: space-between;
 }
