@@ -39,10 +39,17 @@ function Twitter(){
             )
       }
 
+      const sortTweets =() => {
+        tweets.sort((t1,t2) => t2.createdAt.getTime() - t1.createdAt.getTime());
+        setTweets([...tweets]);
+      }
+
       return (
         <>
          <AddTweet onAddTweet={handleAddTweet} />
-         <button>Sort Tweet by Created At</button>
+         <button onClick={sortTweets}>
+            Sort Tweet by Created At
+        </button>
          <TweetList tweets={tweets} onEditTweet = {handleEditTweet}/>
         </>
       )
