@@ -29,7 +29,7 @@ function Twitter(){
             likeCount : Math.floor(Math.random()*10),
             createdAt : new Date()
         }])
-      },[])
+      },[tweets])
 
       const handleEditTweet = useCallback((tweet) => {
             setTweets(
@@ -38,12 +38,12 @@ function Twitter(){
                     else return currentTweet
                 })
             )
-      },[])
+      },[tweets])
 
-      const sortTweets =() => {
+      const sortTweets =useCallback(() => {
         tweets.sort((t1,t2) => t2.createdAt.getTime() - t1.createdAt.getTime());
         setTweets([...tweets]);
-      }
+      },[tweets])
 
       return (
         <>
